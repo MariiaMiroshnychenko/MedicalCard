@@ -1,7 +1,11 @@
 package com.med.card.controller;
 
+import com.med.card.entity.MedicalCard;
+import com.med.card.entity.Patient;
 import com.med.card.entity.PersonalRegData;
 import com.med.card.entity.Role;
+import com.med.card.repository.MedicalCardRepo;
+import com.med.card.repository.PatientRepo;
 import com.med.card.repository.RoleRepo;
 import com.med.card.repository.PersonalRegDataRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +24,10 @@ public class RegistrationController {
     private PersonalRegDataRepo personalRegDataRepo;
     @Autowired
     private RoleRepo roleRepo;
+    @Autowired
+    private MedicalCardRepo medicalCardRepo;
+    @Autowired
+    private PatientRepo patientRepo;
 
     @GetMapping("/registration")
     public String registration() {
@@ -39,7 +47,17 @@ public class RegistrationController {
             user.setEnabled(true);
             user.setRoleId(patient);
 
-            createMedicalCard();
+            personalRegDataRepo.save(user);
+            
+            MedicalCard medicalCard = new MedicalCard();
+            medicalCardRepo.save(medicalCard);
+
+            Patient newPatient = Patient.builder()
+                    .person(user)
+                    .medicalCard(medicalCard)
+                    .build();
+            patientRepo.save(newPatient);
+
         } else {
             model.put("message", "User exists!");
             return "registration";
@@ -47,13 +65,5 @@ public class RegistrationController {
 
         personalRegDataRepo.save(user);
         return "redirect:/login";
-    }
-
-    @Modifying
-    @Query(value = "insert into MedicalCard (visitId, refResultId, status) values (:name, :age, :email, :status)",
-            nativeQuery = true)
-    void createMedicalCard(@Param("name") String name, @Param("age") Integer age,
-                    @Param("status") Integer status, @Param("email") String email);
-    private void createMedicalCard() {
     }
 }

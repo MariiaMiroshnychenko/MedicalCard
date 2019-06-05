@@ -21,9 +21,9 @@ public class Patient {
     @JoinColumn(name = "person_id")
     PersonalRegData person;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "medical_card_id")
-    Integer medicalCard;
+    @OneToOne
+    @JoinColumn(name = "medical_card_id")
+    MedicalCard medicalCard;
 
     @ManyToOne
     @JoinColumn(name = "attending_doctor_id")

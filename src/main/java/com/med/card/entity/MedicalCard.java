@@ -27,5 +27,7 @@ public class MedicalCard {
     private String finalDiagnosis;
     private String discharge;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "medicalCard")
+    private Patient patient;
 
 }
