@@ -43,4 +43,10 @@ public interface PersonalRegDataRepo extends JpaRepository<PersonalRegData, Inte
     @Query(value = "update personal_reg_data prd set prd.password = ? where prd.person_id = ?",
             nativeQuery = true)
     void updatePersonalRegDataSetPasswordForPersonId(String password, Integer medId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update personal_reg_data prd set prd.photo = ? where prd.person_id = ?",
+            nativeQuery = true)
+    void updatePersonalRegDataSetPhotoForPersonId(String photo, Integer medId);
 }

@@ -20,12 +20,12 @@ public class UserDataController {
         this.personalRegDataRepo = personalRegDataRepo;
     }
 
-    @GetMapping("/")
-    public String greeting() {
-        return "greeting";
-    }
+//    @GetMapping("/")
+//    public String greeting() {
+//        return "greeting";
+//    }
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String getLogin(@RequestParam(value = "error", required = false) String error,
                            @RequestParam(value = "logout", required = false) String logout,
                            Model model) {

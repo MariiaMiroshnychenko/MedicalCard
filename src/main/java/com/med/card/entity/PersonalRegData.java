@@ -49,6 +49,7 @@ public class PersonalRegData implements UserDetails {
     private Role roleId;
 
     private boolean enabled;
+    private String photo;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "person")
     private MedicalEmployee medicalEmployee;

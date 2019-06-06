@@ -9,7 +9,7 @@ Login page
 <#if error>
     <div class="alert alert-danger" role="alert">Incorrect input data!</div>
 </#if>
-    <@fa.actionPost "/login" "Sign in">
+    <@fa.actionPost "/" "Sign in">
         <@l.login "username"/>
     </@fa.actionPost>
 <a href="/registration">Add new user</a>
