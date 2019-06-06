@@ -2,7 +2,6 @@ package com.med.card.controller;
 
 import com.med.card.entity.*;
 import com.med.card.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,17 +11,23 @@ import java.util.Map;
 
 @Controller
 public class RegistrationController {
-    @Autowired
+    public RegistrationController(PersonalRegDataRepo personalRegDataRepo, RoleRepo roleRepo,
+                                  MedicalCardRepo medicalCardRepo, PatientRepo patientRepo,
+                                  MedicalEmployeeRepo medicalEmployeeRepo,
+                                  BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.personalRegDataRepo = personalRegDataRepo;
+        this.roleRepo = roleRepo;
+        this.medicalCardRepo = medicalCardRepo;
+        this.patientRepo = patientRepo;
+        this.medicalEmployeeRepo = medicalEmployeeRepo;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
     private PersonalRegDataRepo personalRegDataRepo;
-    @Autowired
     private RoleRepo roleRepo;
-    @Autowired
     private MedicalCardRepo medicalCardRepo;
-    @Autowired
     private PatientRepo patientRepo;
-    @Autowired
     private MedicalEmployeeRepo medicalEmployeeRepo;
-    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/registration")

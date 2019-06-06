@@ -1,11 +1,7 @@
 package com.med.card.controller;
 
-import com.med.card.entity.MedicalEmployee;
 import com.med.card.entity.PersonalRegData;
-import com.med.card.repository.MedicalEmployeeRepo;
 import com.med.card.repository.PersonalRegDataRepo;
-import com.med.card.repository.RoleRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,18 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Controller
 public class UserDataController {
-    @Autowired
     private PersonalRegDataRepo personalRegDataRepo;
-    @Autowired
-    private RoleRepo roleRepo;
-    @Autowired
-    private MedicalEmployeeRepo medicalEmployeeRepo;
+
+    public UserDataController(PersonalRegDataRepo personalRegDataRepo) {
+        this.personalRegDataRepo = personalRegDataRepo;
+    }
 
     @GetMapping("/")
     public String greeting() {
@@ -48,9 +42,6 @@ public class UserDataController {
                               Integer doctorId, String name, String doctorSurname,
                               String patronymic,
                               Model model) {
-//        if (personalRegData.getAuthorities().contains()) {
-//            return "redirect:/patientPage";
-//        }
         String userName = personalRegData.getName() + " " + personalRegData.getSurname();
         model.addAttribute("userName", userName);
         Iterable<PersonalRegData> users;
@@ -72,21 +63,6 @@ public class UserDataController {
         model.addAttribute("users", users);
         return "main";
     }
-
-//    @PostMapping("/main")
-//    public String add(@RequestParam String username, @RequestParam String password, Map<String, Object> model) {
-//        PersonalRegData personalRegData = PersonalRegData.builder()
-//                .username(username)
-//                .password(password)
-//                .build();
-//
-//        personalRegDataRepo.save(personalRegData);
-//
-//        Iterable<PersonalRegData> users = personalRegDataRepo.findAll();
-//        model.put("users", users);
-//
-//        return "main";
-//    }
 
     @PostMapping("/filter")
     public String filter(@RequestParam String surname, Map<String, Object> model) {

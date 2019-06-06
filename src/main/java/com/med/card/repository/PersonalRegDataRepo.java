@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface PersonalRegDataRepo extends JpaRepository<PersonalRegData, Integer> {
     PersonalRegData findByLogin(String login);
-
     //Admin config
     List<PersonalRegData> findAllBySurname(String surname);
     List<PersonalRegData> findAllByRoleId_Title(String roleTitle);
