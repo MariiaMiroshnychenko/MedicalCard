@@ -3,9 +3,7 @@ package com.med.card.controller;
 import com.med.card.entity.*;
 import com.med.card.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +22,8 @@ public class RegistrationController {
     private PatientRepo patientRepo;
     @Autowired
     private MedicalEmployeeRepo medicalEmployeeRepo;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/registration")
     public String registration() {
@@ -35,6 +35,9 @@ public class RegistrationController {
         PersonalRegData userData = personalRegDataRepo.findByLogin(user.getLogin());
         Role employee = roleRepo.findRoleByCode(code);
         Role patient = roleRepo.findRoleByCodeIsNull();
+
+        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
 
         if (userData == null && !code.equals("")) {
             user.setEnabled(true);

@@ -6,6 +6,7 @@ import com.med.card.repository.MedicalEmployeeRepo;
 import com.med.card.repository.PersonalRegDataRepo;
 import com.med.card.repository.RoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,12 +42,17 @@ public class UserDataController {
     }
 
     @GetMapping("/main")
-    public String getAllUsers(@RequestParam(required = false) String surname,
+    public String getAllUsers(@AuthenticationPrincipal PersonalRegData personalRegData,
+            @RequestParam(required = false) String surname,
                               String role, String speciality,
                               Integer doctorId, String name, String doctorSurname,
                               String patronymic,
                               Model model) {
-        Integer counter;
+//        if (personalRegData.getAuthorities().contains()) {
+//            return "redirect:/patientPage";
+//        }
+        String userName = personalRegData.getName() + " " + personalRegData.getSurname();
+        model.addAttribute("userName", userName);
         Iterable<PersonalRegData> users;
         if (surname != null && !surname.isEmpty()) {
             users = personalRegDataRepo.findAllBySurname(surname);

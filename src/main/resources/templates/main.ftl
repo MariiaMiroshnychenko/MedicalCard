@@ -1,7 +1,7 @@
 <#import "parts/common.ftl" as p>
 <#import "parts/form-action.ftl" as fa>
 <@p.page>
-<h2>Hello, User!</h2>
+<h2>Hello, ${userName}!</h2>
 <div><@fa.actionPost "/logout" "Sign out"/></div>
 <div>
     <@fa.actionGet "/main" "Search">

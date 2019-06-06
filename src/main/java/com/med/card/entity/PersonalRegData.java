@@ -1,9 +1,13 @@
 package com.med.card.entity;
 
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
+import java.util.Collections;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,7 +16,7 @@ import java.sql.Date;
 @Setter
 @Entity
 @Table(name="personal_reg_data")
-public class PersonalRegData {
+public class PersonalRegData implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
@@ -44,11 +48,36 @@ public class PersonalRegData {
     @JoinColumn(name = "role")
     private Role roleId;
 
-    private Boolean enabled;
+    private boolean enabled;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "person")
     private MedicalEmployee medicalEmployee;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "person")
     private Patient patient;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(getRoleId());
+    }
+
+    @Override
+    public String getUsername() {
+        return getLogin();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 }
