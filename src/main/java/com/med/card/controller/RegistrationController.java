@@ -1,13 +1,7 @@
 package com.med.card.controller;
 
-import com.med.card.entity.MedicalCard;
-import com.med.card.entity.Patient;
-import com.med.card.entity.PersonalRegData;
-import com.med.card.entity.Role;
-import com.med.card.repository.MedicalCardRepo;
-import com.med.card.repository.PatientRepo;
-import com.med.card.repository.RoleRepo;
-import com.med.card.repository.PersonalRegDataRepo;
+import com.med.card.entity.*;
+import com.med.card.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -28,6 +22,8 @@ public class RegistrationController {
     private MedicalCardRepo medicalCardRepo;
     @Autowired
     private PatientRepo patientRepo;
+    @Autowired
+    private MedicalEmployeeRepo medicalEmployeeRepo;
 
     @GetMapping("/registration")
     public String registration() {
@@ -43,12 +39,19 @@ public class RegistrationController {
         if (userData == null && !code.equals("")) {
             user.setEnabled(true);
             user.setRoleId(employee);
+            personalRegDataRepo.save(user);
+
+            MedicalEmployee medicalEmployee = MedicalEmployee.builder()
+                    .person(user)
+                    .build();
+            medicalEmployeeRepo.save(medicalEmployee);
+
         } else if (userData == null && code.equals("")) {
             user.setEnabled(true);
             user.setRoleId(patient);
 
             personalRegDataRepo.save(user);
-            
+
             MedicalCard medicalCard = new MedicalCard();
             medicalCardRepo.save(medicalCard);
 
