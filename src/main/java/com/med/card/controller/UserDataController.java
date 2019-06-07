@@ -54,9 +54,9 @@ public class UserDataController {
         } else if (speciality != null && !speciality.isEmpty()) {
             model.addAttribute("speciality", speciality);
             users = personalRegDataRepo.findAllByMedicalEmployee_Speciality(speciality);
-        } else if (doctorId != null) {
+        /*} else if (doctorId != null) {
             model.addAttribute("doctorId", doctorId);
-            users = personalRegDataRepo.findAllByPatient_AttendingDoctor_MedId(doctorId);
+            users = personalRegDataRepo.findAllByPatient_AttendingDoctor_MedId(doctorId);*/
         } else {
             users = personalRegDataRepo.findAll();
         }

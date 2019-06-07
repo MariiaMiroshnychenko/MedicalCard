@@ -27,6 +27,7 @@ Please, choose your specialty
     <option value="Лікар-фтизіатр">Лікар-фтизіатр</option>
     <option value="Лікар-хірург">Лікар-хірург</option>
 </select>
+    </@fa.actionPost>
 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css"/>
 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css"/>
 <script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
@@ -132,61 +133,52 @@ Please, choose your specialty
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="confidentiality">
-                                <p></p>
                                 <form role="form">
+                                <#--todo login changing-->
                                     <div class="form-group">
-                                            <label><h5>You can change your login</h5></label>
-                                            <@fa.actionPost "/changeLogin" "Change Login">
-                                                <input type="text" class="form-control rounded"
-                                                       placeholder="Input your new login" name="newLogin">
-                                            </@fa.actionPost>
+                                        <label>You can change your login</label>
+                                                <@fa.actionPost "/doctorPage/changeLogin" "Change Login">
+                                            <input type="text" class="form-control rounded"
+                                                   placeholder="Input new login" name="newLogin">
+                                                </@fa.actionPost>
                                     </div>
                                     <div class="form-group">
-                                                <label>You can change your password</label>
-                                                <@fa.actionPost "/changePassword" "Change Password">
-                                            <input type="text" class="form-control rounded"
+                                    <#if passwordError>
+                                    <div class="alert alert-danger" role="alert">Passwords do not match!</div>
+                                    </#if>
+                                        <label>You can change your password</label>
+                                                <@fa.actionPost "/doctorPage/changePassword" "Change Password">
+                                            <input type="password" class="form-control rounded"
                                                    placeholder="Input new password" name="newPassword">
-                                            <input type="text" class="form-control rounded"
+                                            <input type="password" class="form-control rounded"
                                                    placeholder="Repeat new password" name="repeatedPassword">
                                                 </@fa.actionPost>
-                                                    <#--<#if passwordError>-->
-                                                        <#--<div class="alert alert-danger" role="alert">Passwords do not match!</div>-->
-                                                    <#--</#if>-->
                                     </div>
                                 </form>
                             </div>
-                            <div class="tab-pane fade" id="contact">
-                                <p></p>
+                            <div class="tab-pane fade" id="patients">
                                 <form role="form">
-                                    <div class="form-group">
-                                        <label>Ваше имя</label>
-                                        <input type="text" class="form-control rounded" placeholder="Укажите Ваше Имя">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Ваш телефон</label>
-                                        <input type="text" class="form-control rounded" placeholder="(+7)(095)123456">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>E-mail адрес</label>
-                                        <input type="email" class="form-control rounded" placeholder="Ваш Е-майл">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> Согласен с условиями
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Текст Вашего сообщения</label>
-                                        <textarea class="form-control rounded" style="height: 100px;"></textarea>
-                                        <p class="help-block">Текст сообщения будет отправлен пользователю</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-success" data-original-title="" title="">
-                                            Отправить
-                                        </button>
-                                    </div>
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Full name</th>
+                                            <th scope="col">Medical card</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <tr><#list patientCards as patient>
+                                                <th scope="row">${patient.counter}</th>
+                                                <a href="" <td>${patient.personalRegData.surname} ${patient.personalRegData.name} ${patient.personalRegData.patronymic}</td>/>
+                                                <a href="" <td>${patient.patient.medicalCard.mcId}</td>/>
+                                        </tr>
+                                            </#list>
+
+                                        <#--<td>${attendingDoctorPatients.surname} ${attendingDoctorPatients.name} ${attendingDoctorPatients.patronymic}</td>-->
+                                        <#--<td>${patientMedCards.medicalCard.mcId}</td>-->
+                                        </tbody>
+                                    </table>
                                 </form>
                             </div>
                         </div>
@@ -195,8 +187,6 @@ Please, choose your specialty
             </div>
         </div>
     </div>
-
-</div><!-- /.main -->
 </div><!-- /.container -->
-    </@fa.actionPost>
 </@p.page>
+
