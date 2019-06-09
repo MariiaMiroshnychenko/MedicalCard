@@ -1,7 +1,7 @@
 <#import "parts/common.ftl" as p>
 <#import "parts/form-action.ftl" as fa>
 <@p.page>
-<h1>Hello, doctor!</h1>
+
 Please, choose your specialty
     <@fa.actionPost "/doctorPage" "Add speciality">
 <select title="speciality" name="speciality" multiple>
@@ -109,8 +109,8 @@ Please, choose your specialty
                     <div class="panel-body">
                         <ul id="myTab" class="nav nav-pills">
                             <li class="active"><a href="#detail" data-toggle="tab">About doctor</a></li>
-                            <li class=""><a href="#confidentiality" data-toggle="tab">Confidentiality</a></li>
-                            <li class=""><a href="#patients" data-toggle="tab">Patients</a></li>
+                            <li><a href="#confidentiality" data-toggle="tab">Confidentiality</a></li>
+                            <li><a href="#patients" data-toggle="tab">Patients</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <hr>
@@ -135,13 +135,13 @@ Please, choose your specialty
                             <div class="tab-pane fade" id="confidentiality">
                                 <form role="form">
                                 <#--todo login changing-->
-                                    <div class="form-group">
-                                        <label>You can change your login</label>
-                                                <@fa.actionPost "/doctorPage/changeLogin" "Change Login">
-                                            <input type="text" class="form-control rounded"
-                                                   placeholder="Input new login" name="newLogin">
-                                                </@fa.actionPost>
-                                    </div>
+                                    <#--<div class="form-group">-->
+                                        <#--<label>You can change your login</label>-->
+                                                <#--<@fa.actionPost "/doctorPage/changeLogin" "Change Login">-->
+                                            <#--<input type="text" class="form-control rounded"-->
+                                                   <#--placeholder="Input new login" name="newLogin">-->
+                                                <#--</@fa.actionPost>-->
+                                    <#--</div>-->
                                     <div class="form-group">
                                     <#if passwordError>
                                     <div class="alert alert-danger" role="alert">Passwords do not match!</div>
@@ -157,7 +157,7 @@ Please, choose your specialty
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="patients">
-                                <form role="form">
+                                <form role="form" action="/doctorPage/patientPageForDoctor" method="post">
                                     <table class="table">
                                         <thead class="thead-light">
                                         <tr>
@@ -168,16 +168,19 @@ Please, choose your specialty
                                         </thead>
 
                                         <tbody>
+
                                         <tr><#list patientCards as patient>
-                                                <th scope="row">${patient.counter}</th>
-                                                <a href="" <td>${patient.personalRegData.surname} ${patient.personalRegData.name} ${patient.personalRegData.patronymic}</td>/>
-                                                <a href="" <td>${patient.patient.medicalCard.mcId}</td>/>
+
+                                            <th scope="row">${patient.counter}</th>
+                                            <td><a name="patientFullName" href="/doctorPage/patientPageForDoctor?patientSurname=${patient.personalRegData.surname}&patientName=${patient.personalRegData.name}&patientPatronymic=${patient.personalRegData.patronymic}"> ${patient.personalRegData.surname} ${patient.personalRegData.name} ${patient.personalRegData.patronymic}</a></td>
+                                            <td><a href=""> ${patient.patient.medicalCard.mcId}</a></td>
+
                                         </tr>
                                             </#list>
 
                                         <#--<td>${attendingDoctorPatients.surname} ${attendingDoctorPatients.name} ${attendingDoctorPatients.patronymic}</td>-->
                                         <#--<td>${patientMedCards.medicalCard.mcId}</td>-->
-                                        </tbody>
+                                        <#--</tbody>-->
                                     </table>
                                 </form>
                             </div>

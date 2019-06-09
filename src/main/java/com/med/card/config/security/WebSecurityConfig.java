@@ -40,9 +40,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers( "/registration").permitAll()
-                .antMatchers("/patientPage").hasAuthority("Пацієнт")
-                .antMatchers("/doctorPage").hasAuthority("Сімейний лікар")
+                .antMatchers( "/registration", "/greeting").permitAll()
+                .antMatchers("/patientPage", "/doctorPageForPatient").hasAuthority("Пацієнт")
+                .antMatchers("/patientPageForDoctor", "/doctorPage").hasAuthority("Сімейний лікар")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

@@ -18,7 +18,6 @@ import java.util.Collections;
 @Table(name="personal_reg_data")
 public class PersonalRegData implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
     private Integer id;
 
@@ -40,7 +39,6 @@ public class PersonalRegData implements UserDetails {
 
     private String phone;
     private String email;
-
     private String login;
     private String password;
 

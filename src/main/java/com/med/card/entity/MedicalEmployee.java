@@ -14,7 +14,6 @@ import java.util.List;
 @Table(name="medical_employee")
 public class MedicalEmployee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "med_id")
     private Integer medId;
 
@@ -26,4 +25,14 @@ public class MedicalEmployee {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "attendingDoctor")
     private List<Patient> patients;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "doctorId")
+    private PatientVisit patientVisit;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "respDoctorId")
+    private ExamResultByReferral respDoctor;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "doctorId")
+    private Referral referral;
+
 }

@@ -3,6 +3,7 @@ package com.med.card.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,15 +14,16 @@ import javax.persistence.*;
 @Table(name="medical_card")
 public class MedicalCard {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mc_id")
     private Integer mcId;
 
-    @Column(name = "visit_id")
-    private Integer visitId;
+    @OneToMany
+    @JoinColumn(name = "visit_id")
+    private List<PatientVisit> visitId;
 
-    @Column(name = "ref_result_id")
-    private Integer refResultId;
+    @OneToMany
+    @JoinColumn(name = "ref_result_id")
+    private List<ExamResultByReferral> refResultId;
 
     @Column(name = "final_diagnosis")
     private String finalDiagnosis;
@@ -29,5 +31,4 @@ public class MedicalCard {
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "medicalCard")
     private Patient patient;
-
 }

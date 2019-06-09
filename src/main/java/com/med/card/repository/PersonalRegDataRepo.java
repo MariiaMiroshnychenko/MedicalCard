@@ -21,6 +21,7 @@ public interface PersonalRegDataRepo extends JpaRepository<PersonalRegData, Inte
 
     //Doctor config
     List<PersonalRegData> findAllByPatient_AttendingDoctor(MedicalEmployee medicalEmployee);
+    PersonalRegData findAllBySurnameAndNameAndPatronymic(String surname, String name, String patronymic);
 
     @Modifying
     @Transactional

@@ -1,4 +1,3 @@
-
 <#macro login l_name>
     <#nested>
     <div><label> Login <input type="text" name="${l_name}"/> </label></div>
