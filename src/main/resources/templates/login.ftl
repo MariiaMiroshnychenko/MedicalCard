@@ -1,4 +1,4 @@
-<#import "parts/common.ftl" as p>
+<#import "parts/patient/common.ftl" as p>
 <#import "parts/form-action.ftl" as fa>
 <#import "parts/login.ftl" as l>
 <@p.page>

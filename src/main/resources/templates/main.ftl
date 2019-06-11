@@ -1,4 +1,4 @@
-<#import "parts/common.ftl" as p>
+<#import "parts/patient/common.ftl" as p>
 <#import "parts/form-action.ftl" as fa>
 <@p.page>
 <h2>Hello, ${userName}!</h2>

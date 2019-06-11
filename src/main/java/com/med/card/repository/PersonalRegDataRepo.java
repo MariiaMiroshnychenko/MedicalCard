@@ -1,8 +1,6 @@
 package com.med.card.repository;
 
-import com.med.card.entity.MedicalCard;
-import com.med.card.entity.MedicalEmployee;
-import com.med.card.entity.PersonalRegData;
+import com.med.card.entity.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,15 +11,16 @@ import java.util.List;
 public interface PersonalRegDataRepo extends JpaRepository<PersonalRegData, Integer> {
     PersonalRegData findByLogin(String login);
     //Admin config
-    List<PersonalRegData> findAllBySurname(String surname);
+//    List<PersonalRegData> findAllBySurname(String surname);
     List<PersonalRegData> findAllByRoleId_Title(String roleTitle);
 
     //Patient config
-    List<PersonalRegData> findAllByMedicalEmployee_Speciality(String speciality);
+//    List<PersonalRegData> findAllByMedicalEmployee_Speciality(String speciality);
 
     //Doctor config
     List<PersonalRegData> findAllByPatient_AttendingDoctor(MedicalEmployee medicalEmployee);
     PersonalRegData findAllBySurnameAndNameAndPatronymic(String surname, String name, String patronymic);
+//    PersonalRegData findPersonalRegDataByPatient(Patient patient);
 
     @Modifying
     @Transactional

@@ -26,13 +26,13 @@ public class MedicalEmployee {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "attendingDoctor")
     private List<Patient> patients;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "doctorId")
-    private PatientVisit patientVisit;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctorId")
+    private List<PatientVisit> patientVisit;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "respDoctorId")
     private ExamResultByReferral respDoctor;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "doctorId")
-    private Referral referral;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctorId")
+    private List<Referral> referral;
 
 }

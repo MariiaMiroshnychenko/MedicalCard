@@ -1,4 +1,4 @@
-<#import "parts/common.ftl" as p>
+<#import "parts/patient/common.ftl" as p>
 <#import "parts/form-action.ftl" as fa>
 <@p.page>
 Please, choose your doctor
@@ -9,6 +9,7 @@ Please, choose your doctor
 <#--</#list>-->
 <#--</select>-->
 <#--</@fa.actionPost>-->
+<a href="/appointment">To make appointment</a>
 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css"/>
 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css"/>
 <script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
