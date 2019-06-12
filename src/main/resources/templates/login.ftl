@@ -1,8 +1,7 @@
-<#import "parts/patient/common.ftl" as p>
+<#import "parts/common-general.ftl" as p>
 <#import "parts/form-action.ftl" as fa>
 <#import "parts/login.ftl" as l>
 <@p.page>
-Login page
 <#if logout>
   <div class="alert alert-info" role="alert">You've been logged out</div>
 </#if>
@@ -12,5 +11,10 @@ Login page
     <@fa.actionPost "/" "Sign in">
         <@l.login "username"/>
     </@fa.actionPost>
-<a href="/registration">Add new user</a>
+
+            <div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                    Don't have an account? <a href="/registration"> Sign Up</a>
+                </div>
+            </div>
 </@p.page>

@@ -24,13 +24,13 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a href="/" class="nav-link">Головна</a>
-            </li>
+        <#--<ul class="navbar-nav mr-auto">-->
+            <#--<li class="nav-item active">-->
+                <#--<a href="/" class="nav-link">Головна</a>-->
+            <#--</li>-->
 
 
-        </ul>
+        <#--</ul>-->
     </div>
     <form id="locales" class="form-inline my-2">
         <img src="http://avtovyshyvanka.com/userfiles/shop/large/163_shilda-flag-ukrainy-krug.jpg"

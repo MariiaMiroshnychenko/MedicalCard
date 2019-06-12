@@ -39,7 +39,9 @@ public class PersonalRegData implements UserDetails {
 
     private String phone;
     private String email;
+
     private String login;
+
     private String password;
 
     @ManyToOne

@@ -3,7 +3,7 @@
 <@p.page>
 
 <#--Please, choose your specialty-->
-    <#--<@fa.actionPost "/doctorPage" "Add speciality">-->
+    <#--<@fa.actionPost "/specDoctorPage" "Add speciality">-->
 <#--<select title="speciality" name="speciality" multiple>-->
     <#--<option value="Лікар-акушер-гінеколог">Лікар-акушер-гінеколог</option>-->
     <#--<option value="Лікар-гастроентеролог">Лікар-гастроентеролог</option>-->
@@ -87,14 +87,14 @@
                     <div class="panel-heading">
                         <header class="panel-title">
                             <div class="text-center">
-                                <strong>${doctorSpeciality}</strong>
+                                <#--<strong>${specDoctorSpeciality}</strong>-->
                             </div>
                         </header>
                     </div>
                     <div class="panel-body">
                         <div class="text-center" id="author">
-                            <img src="${doctorPhoto}" width="300" height="300">
-                            <h3>${doctorFullName}</h3>
+                            <#--<img src="${specDoctorPhoto}" width="300" height="300">-->
+                            <h3>${specDoctorFullName}</h3>
 
                         <#--<form action="/doctorPage/changePhoto" method="post">-->
                         <#--<input type="file" name="photo">-->
@@ -119,28 +119,25 @@
                                     <tbody>
                                     <tr>
                                         <td class="active">Birth date:</td>
-                                        <td>${doctorBirthDate}</td>
+                                        <td>${specDoctorBirthDate}</td>
                                     </tr>
                                     <tr>
                                         <td class="active">Phone number:</td>
-                                        <td>${doctorPhoneNumber}</td>
+                                        <td>${specDoctorPhoneNumber}</td>
                                     </tr>
                                     <tr>
                                         <td class="active">Email:</td>
-                                        <td>${doctorEmail}</td>
+                                        <td>${specDoctorEmail}</td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="confidentiality">
-                                <div class="form-group">
-                                    <label>You can change your login</label>
-                                    <@fa.actionPost "/doctorPage/changeLogin" "Change Login">
-                                    <input type="text" class="form-control rounded"
-                                           placeholder="Input new login" name="newLogin">
-                                    </@fa.actionPost>
-                                </div>
+                                <form role="form">
                                     <div class="form-group">
+                                    <#if passwordError>
+                                    <div class="alert alert-danger" role="alert">Passwords do not match!</div>
+                                    </#if>
                                         <label>You can change your password</label>
                                                 <@fa.actionPost "/doctorPage/changePassword" "Change Password">
                                             <input type="password" class="form-control rounded"
@@ -149,34 +146,35 @@
                                                    placeholder="Repeat new password" name="repeatedPassword">
                                                 </@fa.actionPost>
                                     </div>
+                                </form>
                             </div>
                             <div class="tab-pane fade" id="patients">
-                                <form role="form" action="/doctorPage/patientPageForDoctor" method="post">
-                                    <table class="table">
-                                        <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Full name</th>
-                                            <th scope="col">Medical card</th>
-                                        </tr>
-                                        </thead>
+                                <#--<form role="form" action="/d" method="post">-->
+                                    <#--<table class="table">-->
+                                        <#--<thead class="thead-light">-->
+                                        <#--<tr>-->
+                                            <#--<th scope="col">#</th>-->
+                                            <#--<th scope="col">Full name</th>-->
+                                            <#--<th scope="col">Medical card</th>-->
+                                        <#--</tr>-->
+                                        <#--</thead>-->
 
-                                        <tbody>
+                                        <#--<tbody>-->
 
-                                        <tr><#list patientCards as patient>
+                                        <#--<tr><#list patientCards as patient>-->
 
-                                            <th scope="row">${patient.counter}</th>
-                                            <td><a name="patientFullName" href="/doctorPage/patientPageForDoctor?patientSurname=${patient.personalRegData.surname}&patientName=${patient.personalRegData.name}&patientPatronymic=${patient.personalRegData.patronymic}"> ${patient.personalRegData.surname} ${patient.personalRegData.name} ${patient.personalRegData.patronymic}</a></td>
-                                            <td><a href=""> ${patient.patient.medicalCard.mcId}</a></td>
+                                            <#--<th scope="row">${patient.counter}</th>-->
+                                            <#--<td><a name="patientFullName" href="/doctorPage/patientPageForDoctor?patientSurname=${patient.personalRegData.surname}&patientName=${patient.personalRegData.name}&patientPatronymic=${patient.personalRegData.patronymic}"> ${patient.personalRegData.surname} ${patient.personalRegData.name} ${patient.personalRegData.patronymic}</a></td>-->
+                                            <#--<td><a href=""> ${patient.patient.medicalCard.mcId}</a></td>-->
 
-                                        </tr>
-                                            </#list>
+                                        <#--</tr>-->
+                                            <#--</#list>-->
 
                                         <#--<td>${attendingDoctorPatients.surname} ${attendingDoctorPatients.name} ${attendingDoctorPatients.patronymic}</td>-->
                                         <#--<td>${patientMedCards.medicalCard.mcId}</td>-->
                                         <#--</tbody>-->
-                                    </table>
-                                </form>
+                                    <#--</table>-->
+                                <#--</form>-->
                             </div>
                         </div>
                     </div>

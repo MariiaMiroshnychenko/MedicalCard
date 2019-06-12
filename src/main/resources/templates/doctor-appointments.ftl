@@ -14,11 +14,11 @@
                                 </ul>
                                 <div id="myTabContent" class="tab-content">
                                         Search visit by date
-                                            <form method="post" action="/doctorPage/doctor-appointment">
-                                                <input type="date" title="date" name="date">
-                                                <input type="hidden" name="_csrf" value="${_csrf.token}">
-                                                <button>Search</button>
-                                            </form>
+                                            <#--<form method="post" action="/doctorPage/doctor-appointment">-->
+                                                <#--<input type="date" title="date" name="date">-->
+                                                <#--<input type="hidden" name="_csrf" value="${_csrf.token}">-->
+                                                <#--<button>Search</button>-->
+                                            <#--</form>-->
                                     <hr>
                                     <div class="tab-pane fade active in" id="all">
                                         <table class="table table-th-block">
@@ -57,19 +57,19 @@
                                                 <tbody>
                                                 <tr>
                                                     <td>
-                                                        <form method="post" action="/doctorPage/doctor-appointment">
-                                                            Enter referral number <input type="text" name="refNumber"><br/>
-                                                            Enter diagnosis <input type="text" name="diagnosis"><br/>
-                                                            Enter appointments <input type="text" name="appointment"><br/>
-                                                            Referral type
-                                                            <select name="refType">
-                                                            <option value="Направлення до лікаря за спеціальністю">Направлення до лікаря за спеціальністю</option>
-                                                            <option value="Направлення на дослідження">Направлення на дослідження</option>
-                                                        </select><br/>
-                                                            Act title <input type="text" name="actTitle"><br/>
-                                                            <input type="hidden" name="_csrf" value="${_csrf.token}">
-                                                            <button>Add visit</button>
-                                                        </form>
+                                                        <#--<form method="post" action="/doctorPage/doctor-appointment">-->
+                                                            <#--Enter referral number <input type="text" name="refNumber"><br/>-->
+                                                            <#--Enter diagnosis <input type="text" name="diagnosis"><br/>-->
+                                                            <#--Enter appointments <input type="text" name="appointment"><br/>-->
+                                                            <#--Referral type-->
+                                                            <#--<select name="refType">-->
+                                                            <#--<option value="Направлення до лікаря за спеціальністю">Направлення до лікаря за спеціальністю</option>-->
+                                                            <#--<option value="Направлення на дослідження">Направлення на дослідження</option>-->
+                                                        <#--</select><br/>-->
+                                                            <#--Act title <input type="text" name="actTitle"><br/>-->
+                                                            <#--<input type="hidden" name="_csrf" value="${_csrf.token}">-->
+                                                            <#--<button>Add visit</button>-->
+                                                        <#--</form>-->
                                                     </td>
                                                 </tr>
                                                 </tbody>

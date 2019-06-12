@@ -41,8 +41,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers( "/registration", "/greeting").permitAll()
-                .antMatchers("/patientPage", "/doctorPageForPatient", "/appointment").hasAuthority("Пацієнт")
-                .antMatchers("/patientPageForDoctor", "/doctorPage/*").hasAnyAuthority("Сімейний лікар", "Лікар за спеціальністю")
+                .antMatchers("/patientPage", "/doctorPageForPatient").hasAuthority("Пацієнт")
+                .antMatchers("/patientPageForDoctor", "/doctorPage/**").hasAnyAuthority("Сімейний лікар", "Лікар за спеціальністю")
+                .antMatchers("/specDoctorPage/**").hasAnyAuthority("Лікар за спеціальністю")
+                .antMatchers("/medEmployeePage/**").hasAnyAuthority("Медичний персонал")
+                .antMatchers("/adminPage/**").hasAnyAuthority("Адміністратор")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

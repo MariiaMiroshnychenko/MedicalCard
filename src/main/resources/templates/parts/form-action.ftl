@@ -1,15 +1,23 @@
 <#macro actionPost path b_value>
     <form action="${path}" method="post">
         <#nested>
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <div><input type="submit" value="${b_value}"/></div>
+        <table align="center">
+            <tr>
+                <td><input type="hidden" name="_csrf" value="${_csrf.token}">
+                    <input type="submit" class="form-control button btn-success" style="width: 230px" value="${b_value}"/></td>
+            </tr>
+        </table>
     </form>
 </#macro>
 
 <#macro actionGet path b_value>
     <form action="${path}" method="get">
         <#nested>
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <div><input type="submit" value="${b_value}"/></div>
+        <table align="center">
+            <tr>
+                <td><input type="hidden" name="_csrf" value="${_csrf.token}">
+                    <input type="submit" class="form-control button btn-success" style="width: 230px" value="${b_value}"/></td>
+            </tr>
+        </table>
     </form>
 </#macro>

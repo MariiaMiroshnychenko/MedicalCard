@@ -1,15 +1,6 @@
 <#import "parts/patient/common.ftl" as p>
 <#import "parts/form-action.ftl" as fa>
 <@p.page>
-Please, choose your doctor
-<#--<@fa.actionPost "/patientPage" "Choose attending doctor">-->
-<#--<select title="doctorFIO" name="doctorFIO" multiple>-->
-<#--<#list doctors as doctor>-->
-<#--<option value="${doctor.surname}_${doctor.name}_${doctor.patronymic}">${doctor.surname} ${doctor.name} ${doctor.patronymic}</option>-->
-<#--</#list>-->
-<#--</select>-->
-<#--</@fa.actionPost>-->
-<a href="/appointment">To make appointment</a>
 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css"/>
 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css"/>
 <script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
@@ -75,13 +66,8 @@ Please, choose your doctor
                     </div>
                     <div class="panel-body">
                         <div class="text-center" id="author">
-                        <#--<img src="${patientPhoto}" width="300" height="300">-->
+                        <img src="${patientPhoto}" width="300" height="300">
                             <h3>${patientSurname} ${patientName} ${patientPatronymic}</h3>
-
-                        <#--<form action="/doctorPage/changePhoto" method="post">-->
-                        <#--<input type="file" name="photo">-->
-                        <#--&lt;#&ndash;<button class="panel-default" title="Change photo">Change photo</button>&ndash;&gt;-->
-                        <#--</form>-->
                         </div>
                     </div>
                 </div>
@@ -121,29 +107,26 @@ Please, choose your doctor
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="confidentiality">
-                                <form role="form">
-                                <#--todo login changing-->
                                     <div class="form-group">
                                         <label>You can change your login</label>
-                                    <#--<@fa.actionPost "/patientPage/changeLogin" "Change Login">-->
-                                    <#--<input type="text" class="form-control rounded"-->
-                                    <#--placeholder="Input new login" name="newLogin">-->
-                                    <#--</@fa.actionPost>-->
+                                    <@fa.actionPost "/patientPage/changeLogin" "Change Login">
+                                    <input type="text" class="form-control rounded"
+                                    placeholder="Input new login" name="newLogin">
+                                    </@fa.actionPost>
                                     </div>
                                     <div class="form-group">
-                                    <#--<#if passwordError>-->
-                                    <#--<div class="alert alert-danger" role="alert">Passwords do not match!</div>-->
-                                    <#--</#if>-->
                                         <label>You can change your password</label>
                                                 <@fa.actionPost "/patientPage/changePassword" "Change Password">
                                             <input type="password" class="form-control rounded"
+
                                                    placeholder="Input new password" name="newPassword">
                                             <input type="password" class="form-control rounded"
+
                                                    placeholder="Repeat new password" name="repeatedPassword">
                                                 </@fa.actionPost>
                                     </div>
-                                </form>
                             </div>
+                            <#--</div>-->
                             <div class="tab-pane fade" id="medicalCard">
                                 <label>Medical card num: ${medCardId}</label>
                                 <div class="col-lg-8 col-md-8 col-xs-12">
@@ -182,9 +165,6 @@ Please, choose your doctor
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                            </div>
-                                            <div id="myTabContent" class="tab-content">
-                                                <hr>
                                                 <div class="tab-pane fade active in" id="examResults">
                                                     <table class="table table-th-block">
                                                         <thead>
