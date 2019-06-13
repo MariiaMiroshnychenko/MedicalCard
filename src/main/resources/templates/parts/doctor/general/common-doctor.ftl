@@ -9,14 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Main</title>
-    <style type="text/css">
-        #footer {
-            position: fixed; /* Фиксированное положение */
-            padding: 10px; /* Поля вокруг текста */
-            width: 100%; /* Ширина слоя */
-        }
-    </style>
+    <title>Account</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -31,13 +24,19 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <#--<ul class="navbar-nav mr-auto">-->
-            <#--<li class="nav-item active">-->
-                <#--<a href="/" class="nav-link">Головна</a>-->
-            <#--</li>-->
+        <ul class="navbar-nav mr-auto">
+        <#--<li class="nav-item active">-->
+        <#--<a href="/" class="nav-link">Main</a>-->
+        <#--</li>-->
 
+            <li class="nav-item active">
+                <a href="/doctor-appointment" class="nav-link">Appointments</a>
+            </li>
 
-        <#--</ul>-->
+            <li class="nav-item active">
+                <a href="/procedures" class="nav-link">Designated procedures</a>
+            </li>
+        </ul>
     </div>
     <form id="locales" class="form-inline my-2">
         <img src="http://avtovyshyvanka.com/userfiles/shop/large/163_shilda-flag-ukrainy-krug.jpg"
@@ -47,7 +46,7 @@
     </form>
 </nav>
     <#nested>
-<footer class="footer fixed-bottom footer-dark bg-dark " style="height: 45px">
+<footer id="footer" class="footer navbar-fixed-bottom footer-dark bg-dark" style="height: 45px">
     <div class="container my-2" align="center">
         <p>©MIRMEDIS 2019</p>
     </div>

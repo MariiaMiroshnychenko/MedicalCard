@@ -40,12 +40,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers( "/registration", "/greeting").permitAll()
+                .antMatchers( "/registration").permitAll()
                 .antMatchers("/patientPage", "/doctorPageForPatient").hasAuthority("Пацієнт")
-                .antMatchers("/patientPageForDoctor", "/doctorPage/**").hasAnyAuthority("Сімейний лікар", "Лікар за спеціальністю")
-                .antMatchers("/specDoctorPage/**").hasAnyAuthority("Лікар за спеціальністю")
-                .antMatchers("/medEmployeePage/**").hasAnyAuthority("Медичний персонал")
-                .antMatchers("/adminPage/**").hasAnyAuthority("Адміністратор")
+                .antMatchers("/patientPageForDoctor", "/doctorPage/**").hasAuthority("Сімейний лікар")
+                .antMatchers("/specDoctorPage/**").hasAuthority("Лікар за спеціальністю")
+//                .antMatchers("/medEmployeePage/**").hasAnyAuthority("Медичний персонал")
+//                .antMatchers("/adminPage/**").hasAnyAuthority("Адміністратор")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

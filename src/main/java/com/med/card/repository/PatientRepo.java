@@ -13,7 +13,11 @@ import java.util.List;
 public interface PatientRepo extends JpaRepository<Patient, Integer> {
     Patient findByMedicalCard_Patient_Person(PersonalRegData personalRegData);
     Patient findByPerson(PersonalRegData personalRegData);
-//    Patient findByReferralsIs(List<Referral> referrals);
+
+    Patient findByReferralsIs(Referral referral);
+    Patient findByMedicalCard_McId(Integer medCardId);
+
+    Patient findByIdIs(Integer patientId);
 
     @Modifying
     @Transactional

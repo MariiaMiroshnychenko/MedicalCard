@@ -3,31 +3,31 @@
 <@p.page>
 
 <#--Please, choose your specialty-->
-    <#--<@fa.actionPost "/specDoctorPage" "Add speciality">-->
+<#--<@fa.actionPost "/specDoctorPage" "Add speciality">-->
 <#--<select title="speciality" name="speciality" multiple>-->
-    <#--<option value="Лікар-акушер-гінеколог">Лікар-акушер-гінеколог</option>-->
-    <#--<option value="Лікар-гастроентеролог">Лікар-гастроентеролог</option>-->
-    <#--<option value="Лікар-дієтолог">Лікар-дієтолог</option>-->
-    <#--<option value="Лікар-ендокринолог">Лікар-ендокринолог</option>-->
-    <#--<option value="Лікар загальної практики - сімейний лікар">Лікар загальної практики - сімейний лікар</option>-->
-    <#--<option value="Лікар-кардіолог">Лікар-кардіолог</option>-->
-    <#--<option value="Лікар-лаборант">Лікар-лаборант</option>-->
-    <#--<option value="Лікар-невропатолог">Лікар-невропатолог</option>-->
-    <#--<option value="Лікар-нефролог">Лікар-нефролог</option>-->
-    <#--<option value="Лікар-нейрохірург">Лікар-нейрохірург</option>-->
-    <#--<option value="Лікар-отоларинголог">Лікар-отоларинголог</option>-->
-    <#--<option value="Лікар-офтальмолог">Лікар-офтальмолог</option>-->
-    <#--<option value="Лікар-педіатр">Лікар-педіатр</option>-->
-    <#--<option value="Лікар з променевої терапії">Лікар з променевої терапії</option>-->
-    <#--<option value="Лікар-психіатр">Лікар-психіатр</option>-->
-    <#--<option value="Лікар-рентгенолог">Лікар-рентгенолог</option>-->
-    <#--<option value="Лікар-стоматолог">Лікар-стоматолог</option>-->
-    <#--<option value="Лікар-терапевт">Лікар-терапевт</option>-->
-    <#--<option value="Лікар-уролог">Лікар-уролог</option>-->
-    <#--<option value="Лікар-фтизіатр">Лікар-фтизіатр</option>-->
-    <#--<option value="Лікар-хірург">Лікар-хірург</option>-->
+<#--<option value="Лікар-акушер-гінеколог">Лікар-акушер-гінеколог</option>-->
+<#--<option value="Лікар-гастроентеролог">Лікар-гастроентеролог</option>-->
+<#--<option value="Лікар-дієтолог">Лікар-дієтолог</option>-->
+<#--<option value="Лікар-ендокринолог">Лікар-ендокринолог</option>-->
+<#--<option value="Лікар загальної практики - сімейний лікар">Лікар загальної практики - сімейний лікар</option>-->
+<#--<option value="Лікар-кардіолог">Лікар-кардіолог</option>-->
+<#--<option value="Лікар-лаборант">Лікар-лаборант</option>-->
+<#--<option value="Лікар-невропатолог">Лікар-невропатолог</option>-->
+<#--<option value="Лікар-нефролог">Лікар-нефролог</option>-->
+<#--<option value="Лікар-нейрохірург">Лікар-нейрохірург</option>-->
+<#--<option value="Лікар-отоларинголог">Лікар-отоларинголог</option>-->
+<#--<option value="Лікар-офтальмолог">Лікар-офтальмолог</option>-->
+<#--<option value="Лікар-педіатр">Лікар-педіатр</option>-->
+<#--<option value="Лікар з променевої терапії">Лікар з променевої терапії</option>-->
+<#--<option value="Лікар-психіатр">Лікар-психіатр</option>-->
+<#--<option value="Лікар-рентгенолог">Лікар-рентгенолог</option>-->
+<#--<option value="Лікар-стоматолог">Лікар-стоматолог</option>-->
+<#--<option value="Лікар-терапевт">Лікар-терапевт</option>-->
+<#--<option value="Лікар-уролог">Лікар-уролог</option>-->
+<#--<option value="Лікар-фтизіатр">Лікар-фтизіатр</option>-->
+<#--<option value="Лікар-хірург">Лікар-хірург</option>-->
 <#--</select>-->
-    <#--</@fa.actionPost>-->
+<#--</@fa.actionPost>-->
 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css"/>
 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css"/>
 <script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
@@ -87,19 +87,14 @@
                     <div class="panel-heading">
                         <header class="panel-title">
                             <div class="text-center">
-                                <#--<strong>${specDoctorSpeciality}</strong>-->
+                            <strong>${specDoctorSpeciality}</strong>
                             </div>
                         </header>
                     </div>
                     <div class="panel-body">
                         <div class="text-center" id="author">
-                            <#--<img src="${specDoctorPhoto}" width="300" height="300">-->
+                        <img src="${specDoctorPhoto}" width="300" height="300">
                             <h3>${specDoctorFullName}</h3>
-
-                        <#--<form action="/doctorPage/changePhoto" method="post">-->
-                        <#--<input type="file" name="photo">-->
-                        <#--&lt;#&ndash;<button class="panel-default" title="Change photo">Change photo</button>&ndash;&gt;-->
-                        <#--</form>-->
                         </div>
                     </div>
                 </div>
@@ -110,7 +105,6 @@
                         <ul id="myTab" class="nav nav-pills">
                             <li class="active"><a href="#detail" data-toggle="tab">About doctor</a></li>
                             <li><a href="#confidentiality" data-toggle="tab">Confidentiality</a></li>
-                            <li><a href="#patients" data-toggle="tab">Patients</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <hr>
@@ -133,48 +127,18 @@
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="confidentiality">
-                                <form role="form">
-                                    <div class="form-group">
-                                    <#if passwordError>
-                                    <div class="alert alert-danger" role="alert">Passwords do not match!</div>
-                                    </#if>
-                                        <label>You can change your password</label>
+                                <label>You can change your login</label>
+                                    <@fa.actionPost "/doctorPage/changeLogin" "Change Login">
+                                    <input type="text" class="form-control rounded"
+                                           placeholder="Input new login" name="newLogin">
+                                    </@fa.actionPost>
+                                <label>You can change your password</label>
                                                 <@fa.actionPost "/doctorPage/changePassword" "Change Password">
                                             <input type="password" class="form-control rounded"
                                                    placeholder="Input new password" name="newPassword">
                                             <input type="password" class="form-control rounded"
                                                    placeholder="Repeat new password" name="repeatedPassword">
                                                 </@fa.actionPost>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="patients">
-                                <#--<form role="form" action="/d" method="post">-->
-                                    <#--<table class="table">-->
-                                        <#--<thead class="thead-light">-->
-                                        <#--<tr>-->
-                                            <#--<th scope="col">#</th>-->
-                                            <#--<th scope="col">Full name</th>-->
-                                            <#--<th scope="col">Medical card</th>-->
-                                        <#--</tr>-->
-                                        <#--</thead>-->
-
-                                        <#--<tbody>-->
-
-                                        <#--<tr><#list patientCards as patient>-->
-
-                                            <#--<th scope="row">${patient.counter}</th>-->
-                                            <#--<td><a name="patientFullName" href="/doctorPage/patientPageForDoctor?patientSurname=${patient.personalRegData.surname}&patientName=${patient.personalRegData.name}&patientPatronymic=${patient.personalRegData.patronymic}"> ${patient.personalRegData.surname} ${patient.personalRegData.name} ${patient.personalRegData.patronymic}</a></td>-->
-                                            <#--<td><a href=""> ${patient.patient.medicalCard.mcId}</a></td>-->
-
-                                        <#--</tr>-->
-                                            <#--</#list>-->
-
-                                        <#--<td>${attendingDoctorPatients.surname} ${attendingDoctorPatients.name} ${attendingDoctorPatients.patronymic}</td>-->
-                                        <#--<td>${patientMedCards.medicalCard.mcId}</td>-->
-                                        <#--</tbody>-->
-                                    <#--</table>-->
-                                <#--</form>-->
                             </div>
                         </div>
                     </div>
@@ -182,6 +146,7 @@
             </div>
         </div>
     </div>
+</div>
 </div><!-- /.container -->
 </@p.page>
 
