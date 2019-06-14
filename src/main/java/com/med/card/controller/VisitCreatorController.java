@@ -13,25 +13,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 
 @Controller
-public class VisitCreator {
+public class VisitCreatorController {
     private PatientRepo patientRepo;
     private PatientVisitRepo patientVisitRepo;
     private ReferralRepo referralRepo;
 
-    public VisitCreator(PatientRepo patientRepo, ReferralRepo referralRepo,
-                        PatientVisitRepo patientVisitRepo) {
+    public VisitCreatorController(PatientRepo patientRepo, ReferralRepo referralRepo,
+                                  PatientVisitRepo patientVisitRepo) {
         this.patientRepo = patientRepo;
         this.referralRepo = referralRepo;
         this.patientVisitRepo = patientVisitRepo;
     }
 
     @GetMapping("/doctor-appointment")
-    public String getAppointmentPage(Model model, @RequestParam(required = false) Integer patientId){
+    public String getAppointmentPage(Model model, Integer patientId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonalRegData personalRegData = (PersonalRegData) authentication.getPrincipal();
 
@@ -48,7 +47,8 @@ public class VisitCreator {
 
     @PostMapping("/doctor-appointment")
     public String createAppointment(Model model, String number,
-                                    String diagnosis, String appointment) {
+                                    String diagnosis,
+                                    String appType, String appointment) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonalRegData personalRegData = (PersonalRegData) authentication.getPrincipal();
 
@@ -72,7 +72,9 @@ public class VisitCreator {
                 .patientId(patient)
                 .visitDate(LocalDateTime.now())
                 .diagnosis(diagnosis)
+                .appType(appType)
                 .appointment(appointment)
+                .appState(true)
                 .doctorId(personalRegData.getMedicalEmployee())
                 .build();
 

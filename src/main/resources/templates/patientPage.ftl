@@ -66,8 +66,8 @@
                     </div>
                     <div class="panel-body">
                         <div class="text-center" id="author">
-                        <img src="${patientPhoto}" width="300" height="300">
-                            <h3>${patientSurname} ${patientName} ${patientPatronymic}</h3>
+                        <img src="${patientData.photo}" width="300" height="300">
+                            <h3>${patientData.surname} ${patientData.name} ${patientData.patronymic}</h3>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                     <div class="panel-body">
                         <ul id="myTab" class="nav nav-pills">
                             <li class="active"><a href="#detail" data-toggle="tab">About patient</a></li>
-                            <li><a href="#confidentiality" data-toggle="tab">Confidentiality</a></li>
+                            <#--<li><a href="#confidentiality" data-toggle="tab">Confidentiality</a></li>-->
                             <li><a href="#medicalCard" data-toggle="tab">MedicalCard</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
@@ -87,48 +87,53 @@
                                     <tbody>
                                     <tr>
                                         <td class="active">Birth date:</td>
-                                        <td>${patientBirthDate}</td>
+                                        <td>${patientData.birthDate}</td>
                                     </tr>
                                     <tr>
                                         <td class="active">Phone number:</td>
-                                        <td>${patientPhone}</td>
+                                        <td>${patientData.phone}</td>
                                     </tr>
                                     <tr>
                                         <td class="active">Email:</td>
-                                        <td>${patientEmail}</td>
+                                        <td>${patientData.email}</td>
                                     </tr>
                                     <tr>
                                         <td class="active">Attending doctor:</td>
                                         <td><a target="_blank"
-                                               href="/doctorPageForPatient?attendingDoctorSurname=${attendingDoctorSurname}&attendingDoctorName=${attendingDoctorName}&attendingDoctorPatronymic=${attendingDoctorPatronymic}">${attendingDoctorSurname} ${attendingDoctorName} ${attendingDoctorPatronymic}</a>
+                                               href="/doctorPageForPatient?attendingDoctorSurname=${patientData.patient.attendingDoctor.person.surname}
+                                               &attendingDoctorName=${patientData.patient.attendingDoctor.person.name}
+                                               &attendingDoctorPatronymic=${patientData.patient.attendingDoctor.person.patronymic}">
+                                            ${patientData.patient.attendingDoctor.person.surname}
+                                            ${patientData.patient.attendingDoctor.person.name}
+                                            ${patientData.patient.attendingDoctor.person.patronymic}</a>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane fade" id="confidentiality">
-                                    <div class="form-group">
-                                        <label>You can change your login</label>
-                                    <@fa.actionPost "/patientPage/changeLogin" "Change Login">
-                                    <input type="text" class="form-control rounded"
-                                    placeholder="Input new login" name="newLogin">
-                                    </@fa.actionPost>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>You can change your password</label>
-                                                <@fa.actionPost "/patientPage/changePassword" "Change Password">
-                                            <input type="password" class="form-control rounded"
+                            <#--<div class="tab-pane fade" id="confidentiality">-->
+                                    <#--<div class="form-group">-->
+                                        <#--<label>You can change your login</label>-->
+                                    <#--<@fa.actionPost "/patientPage/changeLogin" "Change Login">-->
+                                    <#--<input type="text" class="form-control rounded"-->
+                                    <#--placeholder="Input new login" name="newLogin">-->
+                                    <#--</@fa.actionPost>-->
+                                    <#--</div>-->
+                                    <#--<div class="form-group">-->
+                                        <#--<label>You can change your password</label>-->
+                                                <#--<@fa.actionPost "/patientPage/changePassword" "Change Password">-->
+                                            <#--<input type="password" class="form-control rounded"-->
 
-                                                   placeholder="Input new password" name="newPassword">
-                                            <input type="password" class="form-control rounded"
+                                                   <#--placeholder="Input new password" name="newPassword">-->
+                                            <#--<input type="password" class="form-control rounded"-->
 
-                                                   placeholder="Repeat new password" name="repeatedPassword">
-                                                </@fa.actionPost>
-                                    </div>
-                            </div>
+                                                   <#--placeholder="Repeat new password" name="repeatedPassword">-->
+                                                <#--</@fa.actionPost>-->
+                                    <#--</div>-->
+                            <#--</div>-->
                             <#--</div>-->
                             <div class="tab-pane fade" id="medicalCard">
-                                <label>Medical card num: ${medCardId}</label>
+                                <label>Medical card num: ${patientData.patient.medicalCard.mcId}</label>
                                 <div class="col-lg-8 col-md-8 col-xs-12">
                                     <div class="panel">
                                         <div class="panel-body">
@@ -201,6 +206,6 @@
                 </div>
             </div>
         </div>
-    </div><!-- /.container -->
+    </div>
 </@p.page>
 

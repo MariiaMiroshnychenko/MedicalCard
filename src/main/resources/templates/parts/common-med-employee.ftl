@@ -9,14 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Main</title>
-    <style type="text/css">
-        #footer {
-            position: fixed; /* Фиксированное положение */
-            padding: 10px; /* Поля вокруг текста */
-            width: 100%; /* Ширина слоя */
-        }
-    </style>
+    <title>Account</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -38,6 +31,10 @@
                     <input type="submit" value="Sign Out"/>
                 </form>
             </li>
+
+            <li class="nav-item active">
+                <a href="/procedures" class="nav-link">  Designated procedures</a>
+            </li>
         </ul>
     </div>
     <form id="locales" class="form-inline my-2">
@@ -48,7 +45,7 @@
     </form>
 </nav>
     <#nested>
-<footer class="footer fixed-bottom footer-dark bg-dark " style="height: 45px">
+<footer id="footer" class="footer navbar-fixed-bottom footer-dark bg-dark" style="height: 45px">
     <div class="container my-2" align="center">
         <p>©MIRMEDIS 2019</p>
     </div>

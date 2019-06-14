@@ -38,9 +38,12 @@ public class PatientVisit {
     private String appointment;
 
     @Column(name = "app_state")
-    private boolean appState = true;
+    private boolean appState;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     private MedicalEmployee doctorId;
+
+    @Column(name = "resp_med_employee")
+    private Integer executedByMedId;
 }

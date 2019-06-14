@@ -7,11 +7,11 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public interface MedicalEmployeeRepo extends JpaRepository<MedicalEmployee, Integer>{
     MedicalEmployee findMedicalEmployeeByPerson(PersonalRegData personalRegData);
 
     @Modifying
-    @Transactional
     @Query(value = "update medical_employee me set me.speciality = ? where me.med_id = ?",
             nativeQuery = true)
     void updateMedicalEmployeeSetSpecialityForMedId(String speciality, Integer medId);

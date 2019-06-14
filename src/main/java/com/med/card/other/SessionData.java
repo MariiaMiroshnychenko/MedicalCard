@@ -1,4 +1,4 @@
-package com.med.card.controller;
+package com.med.card.other;
 
 import com.med.card.entity.PersonalRegData;
 import org.springframework.security.core.Authentication;

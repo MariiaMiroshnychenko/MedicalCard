@@ -60,14 +60,14 @@
                     <div class="panel-heading">
                         <header class="panel-title">
                             <div class="text-center">
-                                <strong>${attendingDoctorSpeciality}</strong>
+                                <strong>${attendingDoctor.medicalEmployee.speciality}</strong>
                             </div>
                         </header>
                     </div>
                     <div class="panel-body">
                         <div class="text-center" id="author">
-                            <img src="${attendingDoctorPhoto}" width="300" height="300">
-                            <h3>${attendingDoctorSurname} ${attendingDoctorName} ${attendingDoctorPatronymic}</h3>
+                            <img src="${attendingDoctor.photo}" width="300" height="300">
+                            <h3>${attendingDoctor.surname} ${attendingDoctor.name} ${attendingDoctor.patronymic}</h3>
                         </div>
                     </div>
                 </div>
@@ -85,15 +85,15 @@
                                     <tbody>
                                     <tr>
                                         <td class="active">Birth date:</td>
-                                        <td>${doctorBirthDate}</td>
+                                        <td>${attendingDoctor.birthDate}</td>
                                     </tr>
                                     <tr>
                                         <td class="active">Phone number:</td>
-                                        <td>${doctorPhoneNumber}</td>
+                                        <td>${attendingDoctor.phone}</td>
                                     </tr>
                                     <tr>
                                         <td class="active">Email:</td>
-                                        <td>${doctorEmail}</td>
+                                        <td>${attendingDoctor.email}</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -104,5 +104,5 @@
             </div>
         </div>
     </div>
-</div><!-- /.container -->
+</div>
 </@p.page>

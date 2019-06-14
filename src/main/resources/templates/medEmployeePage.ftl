@@ -1,4 +1,4 @@
-<#import "parts/patient/common.ftl" as p>
+<#import "parts/common-med-employee.ftl" as p>
 <#import "parts/form-action.ftl" as fa>
 <@p.page>
 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css"/>
@@ -60,14 +60,16 @@
                     <div class="panel-heading">
                         <header class="panel-title">
                             <div class="text-center">
-                                <strong>Пацієнт</strong>
+                                <strong>Медичний персонал</strong>
                             </div>
                         </header>
                     </div>
                     <div class="panel-body">
                         <div class="text-center" id="author">
-                            <img src="${patientData.photo}" width="300" height="300">
-                            <h3>${patientSurname} ${patientName} ${patientPatronymic}</h3>
+                        <img src="${medicalEmployee.person.photo}" width="300" height="300">
+                            <h3>${medicalEmployee.person.surname}
+                                ${medicalEmployee.person.name}
+                                ${medicalEmployee.person.patronymic}</h3>
                         </div>
                     </div>
                 </div>
@@ -76,7 +78,7 @@
                 <div class="panel">
                     <div class="panel-body">
                         <ul id="myTab" class="nav nav-pills">
-                            <li class="active"><a href="#detail" data-toggle="tab">About patient</a></li>
+                            <li class="active"><a href="#detail" data-toggle="tab">About medical employee</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <hr>
@@ -85,15 +87,15 @@
                                     <tbody>
                                     <tr>
                                         <td class="active">Birth date:</td>
-                                        <td>${patientData.birthDate}</td>
+                                        <td>${medicalEmployee.person.birthDate}</td>
                                     </tr>
                                     <tr>
                                         <td class="active">Phone number:</td>
-                                        <td>${patientData.phone}</td>
+                                        <td>${medicalEmployee.person.phone}</td>
                                     </tr>
                                     <tr>
                                         <td class="active">Email:</td>
-                                        <td>${patientData.email}</td>
+                                        <td>${medicalEmployee.person.email}</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -103,6 +105,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div><!-- /.container -->
 </@p.page>
+

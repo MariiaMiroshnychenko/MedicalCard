@@ -1,6 +1,7 @@
 package com.med.card.controller;
 
 import com.med.card.entity.*;
+import com.med.card.other.MedicalCardRepo;
 import com.med.card.repository.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,8 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(PersonalRegData user, String code, Map<String, Object> model){
+    public String addUser(PersonalRegData user, String code,
+                          String speciality, Map<String, Object> model){
         PersonalRegData userData = personalRegDataRepo.findByLogin(user.getLogin());
         Role employee = roleRepo.findRoleByCode(code);
         Role patient = roleRepo.findRoleByCodeIsNull();
@@ -51,6 +53,7 @@ public class RegistrationController {
 
             MedicalEmployee medicalEmployee = MedicalEmployee.builder()
                     .person(user)
+                    .speciality(speciality)
                     .build();
             medicalEmployeeRepo.save(medicalEmployee);
 

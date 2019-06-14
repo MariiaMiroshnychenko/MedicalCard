@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Table(name = "exam_result_by_referral")
 public class ExamResultByReferral {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "examResultId")

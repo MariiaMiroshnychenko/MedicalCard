@@ -28,13 +28,18 @@
         <#--<li class="nav-item active">-->
         <#--<a href="/" class="nav-link">Main</a>-->
         <#--</li>-->
-
+            <li class="nav-item">
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}">
+                    <input type="submit" value="Sign Out"/>
+                </form>
+            </li>
             <li class="nav-item active">
-                <a href="/doctor-appointment" class="nav-link">Appointments</a>
+                <a href="/doctor-appointment" class="nav-link">Appointments  </a>
             </li>
 
             <li class="nav-item active">
-                <a href="/procedures" class="nav-link">Designated procedures</a>
+                <a href="/procedures" class="nav-link">  Designated procedures</a>
             </li>
         </ul>
     </div>

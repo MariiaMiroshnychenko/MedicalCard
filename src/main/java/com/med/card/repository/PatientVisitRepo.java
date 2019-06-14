@@ -3,16 +3,27 @@ package com.med.card.repository;
 import com.med.card.entity.MedicalEmployee;
 import com.med.card.entity.Patient;
 import com.med.card.entity.PatientVisit;
-import com.med.card.entity.PersonalRegData;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
+@Transactional
 public interface PatientVisitRepo extends JpaRepository<PatientVisit, Integer> {
     List<PatientVisit> findAllByPatientId(Patient patient);
-//    List<PatientVisit> findAllByDoctorId_Person(PersonalRegData personalRegData);
-//    List<PatientVisit> findAllByVisitDate(LocalDateTime localDateTime);
+
+    List<PatientVisit> findAllByDoctorIdAndAppTypeAndAppState(MedicalEmployee person, String appType, boolean state);
+    List<PatientVisit> findAllByAppTypeAndAppState(String appType, boolean state);
+
+    @Modifying
+    @Query(value = "UPDATE patient_visit pv SET app_state=? WHERE id=?",
+            nativeQuery = true)
+    void updatePatientVisitSetAppStateForId(boolean state, Integer visitId);
+
+    @Modifying
+    @Query(value = "UPDATE patient_visit pv SET resp_med_employee=? WHERE id=?",
+            nativeQuery = true)
+    void updatePatientVisitSetExecutedByPersonForId(Integer medId, Integer visitId);
 }

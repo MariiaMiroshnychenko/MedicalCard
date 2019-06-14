@@ -18,6 +18,7 @@ import java.util.Collections;
 @Table(name="personal_reg_data")
 public class PersonalRegData implements UserDetails {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
     private Integer id;
 

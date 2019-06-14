@@ -1,5 +1,5 @@
-<#import "parts/patient/common.ftl" as p>
-<#import "parts/form-action.ftl" as fa>
+<#import "../../../../../resources/templates/parts/patient/common.ftl" as p>
+<#import "../../../../../resources/templates/parts/form-action.ftl" as fa>
 <@p.page>
 <h2>Hello, ${userName}!</h2>
 <div><@fa.actionPost "/logout" "Sign out"/></div>

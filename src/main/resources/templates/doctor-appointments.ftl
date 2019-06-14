@@ -17,11 +17,20 @@
                     <td><input type="text" name="number"></td>
                 </tr>
                 <tr>
-                    <td>Enter diagnosis   </td>
+                    <td>Enter diagnosis</td>
                     <td><input type="text" name="diagnosis"></td>
                 </tr>
                 <tr>
-                    <td>Enter appointments   </td>
+                    <td>Choose appointment type</td>
+                    <td><select name="appType">
+                        <option value="Лікування">Лікування</option>
+                        <option value="Спеціальне лікування">Спеціальне лікування</option>
+                        <option value="Процедура">Процедура</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter appointments</td>
                     <td><input type="text" name="appointment"></td>
                 </tr>
                 <tr>
@@ -42,23 +51,23 @@
             <table>
                 <tbody>
                 <tr>
-                    <td>Patient id </td>
+                    <td>Patient id</td>
                     <td><input type="text" name="pId" value="${patientId}"></td>
                 </tr>
                 <tr>
-                    <td>Referral type   </td>
+                    <td>Referral type</td>
                     <td>
                         <select name="refType">
-                        <option value="">--------------------------------------</option>
-                        <option value="Направлення до лікаря за спеціальністю">
-                            Направлення до лікаря за спеціальністю
-                        </option>
-                        <option value="Направлення на дослідження">Направлення на дослідження</option>
-                    </select>
+                            <option value="">--------------------------------------</option>
+                            <option value="Направлення до лікаря за спеціальністю">
+                                Направлення до лікаря за спеціальністю
+                            </option>
+                            <option value="Направлення на дослідження">Направлення на дослідження</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
-                    <td>Act title   </td>
+                    <td>Act title</td>
                     <td><input type="text" name="actTitle"></td>
                 </tr>
                 <tr>

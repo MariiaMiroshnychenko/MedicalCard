@@ -46,47 +46,24 @@ public class UserUrlAuthenticationSuccessHandler implements AuthenticationSucces
     }
 
     private String determineTargetUrl(Authentication authentication) {
-        boolean isPatient = false;
-        boolean isDoctor = false;
-        boolean isSpecDoctor = false;
-        boolean isMedEmployee = false;
-        boolean isAdmin = false;
 
         Collection<? extends GrantedAuthority> authorities
                 = authentication.getAuthorities();
+
         for (GrantedAuthority grantedAuthority : authorities) {
             switch (grantedAuthority.getAuthority()) {
                 case ("Пацієнт"):
-                    isPatient = true;
-                    break;
+                    return "/patientPage";
                 case ("Сімейний лікар"):
-                    isDoctor = true;
-                    break;
+                    return "/doctorPage";
                 case ("Лікар за спеціальністю"):
-                    isSpecDoctor = true;
-                    break;
+                    return "/specDoctorPage";
                 case ("Медичний персонал"):
-                    isMedEmployee = true;
-                    break;
-                case ("Адміністратор"):
-                    isAdmin = true;
-                    break;
+                    return "/medEmployeePage";
             }
         }
 
-        if (isPatient) {
-            return "/patientPage";
-        } else if (isDoctor) {
-            return "/doctorPage";
-        } else if (isSpecDoctor) {
-            return "/specDoctorPage";
-        } else if (isMedEmployee) {
-            return "/medEmployeePage";
-        } else if (isAdmin) {
-            return "/adminPage";
-        } else {
-            throw new IllegalStateException();
-        }
+        return "/";
     }
 
     private void clearAuthenticationAttributes(HttpServletRequest request) {
@@ -95,13 +72,5 @@ public class UserUrlAuthenticationSuccessHandler implements AuthenticationSucces
             return;
         }
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
-    }
-
-    public void setRedirectStrategy(RedirectStrategy redirectStrategy) {
-        this.redirectStrategy = redirectStrategy;
-    }
-
-    protected RedirectStrategy getRedirectStrategy() {
-        return redirectStrategy;
     }
 }

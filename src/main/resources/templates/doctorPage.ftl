@@ -87,14 +87,16 @@
                     <div class="panel-heading">
                         <header class="panel-title">
                             <div class="text-center">
-                                <strong>${doctorSpeciality}</strong>
+                                <strong>${docData.medicalEmployee.speciality}</strong>
                             </div>
                         </header>
                     </div>
                     <div class="panel-body">
                         <div class="text-center" id="author">
-                            <img src="${doctorPhoto}" width="300" height="300">
-                            <h3>${doctorFullName}</h3>
+                            <img src="${docData.photo}" width="300" height="300">
+                            <h3>${docData.surname}
+                                ${docData.name}
+                                ${docData.patronymic}</h3>
 
                         <#--<form action="/doctorPage/changePhoto" method="post">-->
                         <#--<input type="file" name="photo">-->
@@ -109,7 +111,7 @@
                     <div class="panel-body">
                         <ul id="myTab" class="nav nav-pills">
                             <li class="active"><a href="#detail" data-toggle="tab">About doctor</a></li>
-                            <li><a href="#confidentiality" data-toggle="tab">Confidentiality</a></li>
+                            <#--<li><a href="#confidentiality" data-toggle="tab">Confidentiality</a></li>-->
                             <li><a href="#patients" data-toggle="tab">Patients</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
@@ -119,37 +121,37 @@
                                     <tbody>
                                     <tr>
                                         <td class="active">Birth date:</td>
-                                        <td>${doctorBirthDate}</td>
+                                        <td>${docData.birthDate}</td>
                                     </tr>
                                     <tr>
                                         <td class="active">Phone number:</td>
-                                        <td>${doctorPhoneNumber}</td>
+                                        <td>${docData.phone}</td>
                                     </tr>
                                     <tr>
                                         <td class="active">Email:</td>
-                                        <td>${doctorEmail}</td>
+                                        <td>${docData.email}</td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane fade" id="confidentiality">
-                                <div class="form-group">
-                                    <label>You can change your login</label>
-                                    <@fa.actionPost "/doctorPage/changeLogin" "Change Login">
-                                    <input type="text" class="form-control rounded"
-                                           placeholder="Input new login" name="newLogin">
-                                    </@fa.actionPost>
-                                </div>
-                                    <div class="form-group">
-                                        <label>You can change your password</label>
-                                                <@fa.actionPost "/doctorPage/changePassword" "Change Password">
-                                            <input type="password" class="form-control rounded"
-                                                   placeholder="Input new password" name="newPassword">
-                                            <input type="password" class="form-control rounded"
-                                                   placeholder="Repeat new password" name="repeatedPassword">
-                                                </@fa.actionPost>
-                                    </div>
-                            </div>
+                            <#--<div class="tab-pane fade" id="confidentiality">-->
+                                <#--<div class="form-group">-->
+                                    <#--<label>You can change your login</label>-->
+                                    <#--<@fa.actionPost "/doctorPage/changeLogin" "Change Login">-->
+                                    <#--<input type="text" class="form-control rounded"-->
+                                           <#--placeholder="Input new login" name="newLogin">-->
+                                    <#--</@fa.actionPost>-->
+                                <#--</div>-->
+                                    <#--<div class="form-group">-->
+                                        <#--<label>You can change your password</label>-->
+                                                <#--<@fa.actionPost "/doctorPage/changePassword" "Change Password">-->
+                                            <#--<input type="password" class="form-control rounded"-->
+                                                   <#--placeholder="Input new password" name="newPassword">-->
+                                            <#--<input type="password" class="form-control rounded"-->
+                                                   <#--placeholder="Repeat new password" name="repeatedPassword">-->
+                                                <#--</@fa.actionPost>-->
+                                    <#--</div>-->
+                            <#--</div>-->
                             <div class="tab-pane fade" id="patients">
                                 <form role="form" action="/doctorPage/patientPageForDoctor" method="post">
                                     <table class="table">
