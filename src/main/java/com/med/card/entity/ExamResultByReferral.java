@@ -30,7 +30,4 @@ public class ExamResultByReferral {
     @OneToOne
     @JoinColumn(name = "resp_doctor_id")
     private MedicalEmployee respDoctorId;
-
-//    @ManyToOne(targetEntity = MedicalCard.class)
-//    private MedicalCard medicalCard;
 }
