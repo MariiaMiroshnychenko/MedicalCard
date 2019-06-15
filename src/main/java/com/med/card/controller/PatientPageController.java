@@ -39,10 +39,10 @@ public class PatientPageController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonalRegData patientData = (PersonalRegData) authentication.getPrincipal();
 
-        List<PersonalRegData> doctors = personalRegDataRepo.findAllByRoleId_Title("Сімейний лікар");
+//        List<PersonalRegData> doctors = personalRegDataRepo.findAllByRoleId_Title("Сімейний лікар");
 
-        Patient patient = patientRepo.findByMedicalCard_Patient_Person(patientData);
-        patientRepo.save(patient);
+//        Patient patient = patientRepo.findByPerson(patientData);
+//        patientRepo.save(patient);
 
         Patient patientId = patientRepo.findByPerson(patientData);
 
@@ -51,7 +51,7 @@ public class PatientPageController {
         List<ExamResultByReferral> referralResults = examResultByReferralRepo.findAllByRefId_RefTypeAndRefId_PatientId(
                 "Направлення на дослідження", patientId);
 
-        model.addAttribute("doctors", doctors);
+//        model.addAttribute("doctors", doctors);
         model.addAttribute("patientData", patientData);
         model.addAttribute("patientVisits", patientVisits);
         model.addAttribute("referralResults", referralResults);

@@ -1,24 +1,24 @@
 package com.med.card.controller;
 
 import com.med.card.entity.*;
-import com.med.card.other.MedicalCardRepo;
 import com.med.card.repository.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @Controller
 public class RegistrationController {
-    public RegistrationController(PersonalRegDataRepo personalRegDataRepo, RoleRepo roleRepo,
-                                  MedicalCardRepo medicalCardRepo, PatientRepo patientRepo,
+    public RegistrationController(PersonalRegDataRepo personalRegDataRepo,
+                                  RoleRepo roleRepo, PatientRepo patientRepo,
                                   MedicalEmployeeRepo medicalEmployeeRepo,
                                   BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.personalRegDataRepo = personalRegDataRepo;
         this.roleRepo = roleRepo;
-        this.medicalCardRepo = medicalCardRepo;
         this.patientRepo = patientRepo;
         this.medicalEmployeeRepo = medicalEmployeeRepo;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -26,7 +26,6 @@ public class RegistrationController {
 
     private PersonalRegDataRepo personalRegDataRepo;
     private RoleRepo roleRepo;
-    private MedicalCardRepo medicalCardRepo;
     private PatientRepo patientRepo;
     private MedicalEmployeeRepo medicalEmployeeRepo;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -49,6 +48,7 @@ public class RegistrationController {
         if (userData == null && !code.equals("")) {
             user.setEnabled(true);
             user.setRoleId(employee);
+            user.setPhoto("https://www.pngkey.com/maxpic/u2q8u2w7e6y3r5y3/");
             personalRegDataRepo.save(user);
 
             MedicalEmployee medicalEmployee = MedicalEmployee.builder()
@@ -63,12 +63,13 @@ public class RegistrationController {
 
             personalRegDataRepo.save(user);
 
-            MedicalCard medicalCard = new MedicalCard();
-            medicalCardRepo.save(medicalCard);
+            List<MedicalEmployee> attendingDoctors = medicalEmployeeRepo.findAllByPerson_RoleId_Title("Сімейний лікар");
+            Random random = new Random();
 
             Patient newPatient = Patient.builder()
                     .person(user)
-                    .medicalCard(medicalCard)
+                    .medicalCard(patientRepo.selectPatientDescLimit() + 1)
+                    .attendingDoctor(attendingDoctors.get(random.nextInt(attendingDoctors.size())))
                     .build();
             patientRepo.save(newPatient);
 

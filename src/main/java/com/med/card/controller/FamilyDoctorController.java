@@ -42,31 +42,19 @@ public class FamilyDoctorController {
         MedicalEmployee medicalEmployee = medicalEmployeeRepo.findMedicalEmployeeByPerson(personalRegData);
 
         List<PersonalRegData> attendingDoctorPatients = personalRegDataRepo.findAllByPatient_AttendingDoctor(medicalEmployee);
-        List<Patient> patientMedCards = new ArrayList<>();
-        List<DoctorPatientInfo> doctorPatientInfoList = new ArrayList<>();
+//        List<Patient> patientMedCards = new ArrayList<>();
+//        List<DoctorPatientInfo> doctorPatientInfoList = new ArrayList<>();
 
-        attendingDoctorPatients
-                .forEach(person -> patientMedCards.add(patientRepo.findByMedicalCard_Patient_Person(person)));
+//        attendingDoctorPatients
+//                .forEach(person -> patientMedCards.add(patientRepo.findByMedicalCard_Patient_Person(person)));
 
-        for (int i = 0; i < attendingDoctorPatients.size(); i++) {
-            doctorPatientInfoList.add(new DoctorPatientInfo(i + 1, attendingDoctorPatients.get(i), patientMedCards.get(i)));
-        }
+//        for (int i = 0; i < attendingDoctorPatients.size(); i++) {
+//            doctorPatientInfoList.add(new DoctorPatientInfo(i + 1, attendingDoctorPatients.get(i), patientMedCards.get(i)));
+//        }
 
         model.addAttribute("passwordError", passwordError != null);
         model.addAttribute("docData", personalRegData);
-        model.addAttribute("patientCards", doctorPatientInfoList);
-
-        return "doctorPage";
-    }
-
-    @PostMapping("/doctorPage")
-    public String addSpeciality(String speciality) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PersonalRegData personalRegData = (PersonalRegData) authentication.getPrincipal();
-        MedicalEmployee medicalEmployee = medicalEmployeeRepo.findMedicalEmployeeByPerson(personalRegData);
-
-        medicalEmployeeRepo.updateMedicalEmployeeSetSpecialityForMedId(speciality, medicalEmployee.getMedId());
-        medicalEmployeeRepo.save(medicalEmployee);
+        model.addAttribute("patients", attendingDoctorPatients);
 
         return "doctorPage";
     }

@@ -22,9 +22,8 @@ public class Patient {
     @JoinColumn(name = "person_id")
     private PersonalRegData person;
 
-    @OneToOne
-    @JoinColumn(name = "medical_card_id")
-    private MedicalCard medicalCard;
+    @Column(name = "medical_card_id")
+    private Integer medicalCard;
 
     @ManyToOne
     @JoinColumn(name = "attending_doctor_id")

@@ -11,14 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public interface PatientRepo extends JpaRepository<Patient, Integer> {
-    Patient findByMedicalCard_Patient_Person(PersonalRegData personalRegData);
     Patient findByPerson(PersonalRegData personalRegData);
     Patient findByReferralsIs(Referral referral);
-    Patient findByMedicalCard_McId(Integer medCardId);
+    Patient findByMedicalCard(Integer medCardId);
     Patient findByIdIs(Integer patientId);
 
     @Modifying
     @Query(value = "UPDATE patient p SET p.attending_doctor_id = ? WHERE p.person_id = ?",
             nativeQuery = true)
     void updatePatientSetAttendingDoctorForPersonId(MedicalEmployee doctorId, Integer personId);
+
+    @Query(value = "SELECT medical_card_id from patient ORDER BY patient_id DESC LIMIT 1",
+            nativeQuery = true)
+    Integer selectPatientDescLimit();
 }

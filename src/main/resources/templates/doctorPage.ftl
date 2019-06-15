@@ -157,7 +157,7 @@
                                     <table class="table">
                                         <thead class="thead-light">
                                         <tr>
-                                            <th scope="col">#</th>
+                                            <#--<th scope="col">#</th>-->
                                             <th scope="col">Full name</th>
                                             <th scope="col">Medical card</th>
                                         </tr>
@@ -165,11 +165,12 @@
 
                                         <tbody>
 
-                                        <tr><#list patientCards as patient>
+                                        <tr><#list patients as patient>
 
-                                            <th scope="row">${patient.counter}</th>
-                                            <td><a name="patientFullName" href="/doctorPage/patientPageForDoctor?patientSurname=${patient.personalRegData.surname}&patientName=${patient.personalRegData.name}&patientPatronymic=${patient.personalRegData.patronymic}"> ${patient.personalRegData.surname} ${patient.personalRegData.name} ${patient.personalRegData.patronymic}</a></td>
-                                            <td><a href=""> ${patient.patient.medicalCard.mcId}</a></td>
+                                            <#--<th scope="row">${patient.counter}</th>-->
+                                            <td><a name="patientFullName" href="/doctorPage/patientPageForDoctor?patientSurname=${patient.surname}&patientName=${patient.name}&patientPatronymic=${patient.patronymic}">
+                                                ${patient.surname} ${patient.name} ${patient.patronymic}</a></td>
+                                            <td><a href=""> ${patient.patient.medicalCard}</a></td>
 
                                         </tr>
                                             </#list>

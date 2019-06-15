@@ -61,7 +61,7 @@ public class VisitCreatorController {
 
         if (personalRegData.getRoleId().getTitle().equals("Сімейний лікар")) {
             idReferralToDoctor = null;
-            patient = patientRepo.findByMedicalCard_McId(Integer.valueOf(number));
+            patient = patientRepo.findByMedicalCard(Integer.valueOf(number));
         } else {
             idReferralToDoctor = referralRepo.findByIdIs(Integer.valueOf(number));
             patient = patientRepo.findByReferralsIs(idReferralToDoctor);

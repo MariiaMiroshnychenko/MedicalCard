@@ -29,20 +29,9 @@ public class PersonalRegData implements UserDetails {
     @Column(name = "birth_date")
     private Date birthDate;
 
-    @Column(name = "pass_series")
-    private String passSeries;
-
-    @Column(name = "pass_number")
-    private String passNumber;
-
-    @Column(name = "ident_code")
-    private String identCode;
-
     private String phone;
     private String email;
-
     private String login;
-
     private String password;
 
     @ManyToOne

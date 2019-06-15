@@ -20,18 +20,6 @@
             <td><input type="date" class="form-control" name="birthDate"/></td>
         </tr>
         <tr>
-            <td>Passport series : </td>
-            <td><input type="text" class="form-control" name="passSeries"/></td>
-        </tr>
-        <tr>
-            <td>User Passport number : </td>
-            <td><input type="text" class="form-control" name="passNumber"/></td>
-        </tr>
-        <tr>
-            <td>Identify code : </td>
-            <td><input type="text" class="form-control" name="identCode"/></td>
-        </tr>
-        <tr>
             <td>Phone number : </td>
             <td><input type="text" class="form-control" name="phone"/></td>
         </tr>
@@ -52,7 +40,7 @@
             <td><input type="text" class="form-control" name="code"/></td>
         </tr>
         <tr>
-            <td> If you`re medical employee,
+            <td> If you`re medical employee,<br>
                 please, choose your specialty</td>
             <td>
                 <select title="speciality" name="speciality">
@@ -84,7 +72,7 @@
         <tr>
             <td></td>
             <td><input type="hidden" name="_csrf" value="${_csrf.token}">
-                <input type="submit" class="form-control button btn-success" value="Sign In" style="width: 230px"/></td>
+                <input type="submit" class="form-control button btn-success" value="Sign Up" style="width: 230px"/></td>
         </tr>
     </table>
 </form>
