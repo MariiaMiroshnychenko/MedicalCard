@@ -39,11 +39,6 @@ public class PatientPageController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonalRegData patientData = (PersonalRegData) authentication.getPrincipal();
 
-//        List<PersonalRegData> doctors = personalRegDataRepo.findAllByRoleId_Title("Сімейний лікар");
-
-//        Patient patient = patientRepo.findByPerson(patientData);
-//        patientRepo.save(patient);
-
         Patient patientId = patientRepo.findByPerson(patientData);
 
         List<PatientVisit> patientVisits = patientVisitRepo.findAllByPatientId(patientId);

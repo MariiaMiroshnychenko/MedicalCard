@@ -2,10 +2,6 @@
 <#import "parts/form-action.ftl" as fa>
 <@p.page>
 
-<#--Please, choose your specialty-->
-<#--<@fa.actionPost "/specDoctorPage" "Add speciality">-->
-
-<#--</@fa.actionPost>-->
 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css"/>
 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css"/>
 <script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>

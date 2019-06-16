@@ -66,7 +66,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="text-center" id="author">
-                        <img src="${patientData.photo}" width="300" height="300">
+                            <img src="${patientData.photo}" width="300" height="300">
                             <h3>${patientData.surname} ${patientData.name} ${patientData.patronymic}</h3>
                         </div>
                     </div>
@@ -77,7 +77,6 @@
                     <div class="panel-body">
                         <ul id="myTab" class="nav nav-pills">
                             <li class="active"><a href="#detail" data-toggle="tab">About patient</a></li>
-                            <#--<li><a href="#confidentiality" data-toggle="tab">Confidentiality</a></li>-->
                             <li><a href="#medicalCard" data-toggle="tab">MedicalCard</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
@@ -111,91 +110,64 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <#--<div class="tab-pane fade" id="confidentiality">-->
-                                    <#--<div class="form-group">-->
-                                        <#--<label>You can change your login</label>-->
-                                    <#--<@fa.actionPost "/patientPage/changeLogin" "Change Login">-->
-                                    <#--<input type="text" class="form-control rounded"-->
-                                    <#--placeholder="Input new login" name="newLogin">-->
-                                    <#--</@fa.actionPost>-->
-                                    <#--</div>-->
-                                    <#--<div class="form-group">-->
-                                        <#--<label>You can change your password</label>-->
-                                                <#--<@fa.actionPost "/patientPage/changePassword" "Change Password">-->
-                                            <#--<input type="password" class="form-control rounded"-->
-
-                                                   <#--placeholder="Input new password" name="newPassword">-->
-                                            <#--<input type="password" class="form-control rounded"-->
-
-                                                   <#--placeholder="Repeat new password" name="repeatedPassword">-->
-                                                <#--</@fa.actionPost>-->
-                                    <#--</div>-->
-                            <#--</div>-->
-                            <#--</div>-->
                             <div class="tab-pane fade" id="medicalCard">
-                                <label>Medical card num: ${patientData.patient.medicalCard.mcId}</label>
-                                <div class="col-lg-8 col-md-8 col-xs-12">
-                                    <div class="panel">
-                                        <div class="panel-body">
-                                            <ul id="myTab" class="nav nav-pills">
-                                                <li class="active"><a href="#visits" data-toggle="tab">Visits</a></li>
-                                                <li><a href="#examResults" data-toggle="tab">Exam results</a></li>
-                                                <#--<li><a href="#discharges" data-toggle="tab">Discharges</a></li>-->
-                                            </ul>
-                                            <div id="myTabContent" class="tab-content">
-                                                <hr>
-                                                <div class="tab-pane fade active in" id="visits">
-                                                    <table class="table table-th-block">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>Visit date</th>
-                                                            <th>Referral num</th>
-                                                            <th>Doctor speciality</th>
-                                                            <th>Diagnosis</th>
-                                                            <th>Appointment</th>
-                                                            <th>Doctor full name</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <ul id="myTab" class="nav nav-pills">
+                                            <li class="active"><a href="#visits" data-toggle="tab">Visits</a></li>
+                                            <li><a href="#examResults" data-toggle="tab">Exam results</a></li>
+                                        </ul>
+                                        <div id="myTabContent" class="tab-content">
+                                            <hr>
+                                            <div class="tab-pane fade active in" id="visits">
+                                                <table class="table table-th-block">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Visit date</th>
+                                                        <th>Doctor speciality</th>
+                                                        <th>Diagnosis</th>
+                                                        <th>Appointment</th>
+                                                        <th>Doctor full name</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
                                                                 <#list patientVisits as pVisit>
                                                                     <td>${pVisit.visitDate}</td>
-                                                                    <td>${pVisit.idReferralToDoctor.id}</td>
                                                                     <td>${pVisit.doctorId.speciality}</td>
                                                                     <td>${pVisit.diagnosis}</td>
                                                                     <td>${pVisit.appointment}</td>
                                                                     <td>${pVisit.doctorId.person.surname} ${pVisit.doctorId.person.name} ${pVisit.doctorId.person.patronymic}</td>
                                                                      </tr>
                                                                 </#list>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="tab-pane fade active in" id="examResults">
-                                                    <table class="table table-th-block">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>Referral num</th>
-                                                            <th>Result</th>
-                                                            <th>Date</th>
-                                                            <th>Doctor full name</th>
-                                                            <th>Doctor speciality</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="tab-pane fade active in" id="examResults">
+                                                <table class="table table-th-block">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Referral num</th>
+                                                        <th>Result</th>
+                                                        <th>Date</th>
+                                                        <th>Doctor full name</th>
+                                                        <th>Doctor speciality</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
                                                                 <#list referralResults as refResult>
-                                                                   <td>${refResult.id}</td>
-                                                                   <td>${refResult.resultText}</td>
-                                                                   <td>${refResult.resDate}</td>
-                                                                   <td>${refResult.respDoctorId.person.surname}
-                                                                       ${refResult.respDoctorId.person.name}
-                                                                       ${refResult.respDoctorId.person.patronymic}</td>
+                                                                    <td>${refResult.id}</td>
+                                                                    <td>${refResult.resultText}</td>
+                                                                    <td>${refResult.resDate}</td>
+                                                                    <td>${refResult.respDoctorId.person.surname}
+                                                                        ${refResult.respDoctorId.person.name}
+                                                                        ${refResult.respDoctorId.person.patronymic}</td>
                                                                     <td>${refResult.respDoctorId.speciality}</td>
                                                                      </tr>
                                                                 </#list>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>

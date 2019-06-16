@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional
 public interface MedicalEmployeeRepo extends JpaRepository<MedicalEmployee, Integer>{
     MedicalEmployee findMedicalEmployeeByPerson(PersonalRegData personalRegData);
     List<MedicalEmployee> findAllByPerson_RoleId_Title(String roleTitle);
