@@ -13,6 +13,12 @@ import java.util.Random;
 
 @Controller
 public class RegistrationController {
+    private PersonalRegDataRepo personalRegDataRepo;
+    private RoleRepo roleRepo;
+    private PatientRepo patientRepo;
+    private MedicalEmployeeRepo medicalEmployeeRepo;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     public RegistrationController(PersonalRegDataRepo personalRegDataRepo,
                                   RoleRepo roleRepo, PatientRepo patientRepo,
                                   MedicalEmployeeRepo medicalEmployeeRepo,
@@ -23,12 +29,6 @@ public class RegistrationController {
         this.medicalEmployeeRepo = medicalEmployeeRepo;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
-
-    private PersonalRegDataRepo personalRegDataRepo;
-    private RoleRepo roleRepo;
-    private PatientRepo patientRepo;
-    private MedicalEmployeeRepo medicalEmployeeRepo;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/registration")
     public String registration() {
