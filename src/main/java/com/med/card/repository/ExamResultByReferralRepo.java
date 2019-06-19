@@ -1,7 +1,7 @@
 package com.med.card.repository;
 
-import com.med.card.entity.ExamResultByReferral;
-import com.med.card.entity.Patient;
+import com.med.card.model.entity.ExamResultByReferral;
+import com.med.card.model.entity.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

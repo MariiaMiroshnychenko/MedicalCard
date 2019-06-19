@@ -1,9 +1,9 @@
 package com.med.card.controller;
 
-import com.med.card.entity.Patient;
-import com.med.card.entity.PatientVisit;
-import com.med.card.entity.PersonalRegData;
-import com.med.card.entity.Referral;
+import com.med.card.model.entity.Patient;
+import com.med.card.model.entity.PatientVisit;
+import com.med.card.model.entity.PersonalRegData;
+import com.med.card.model.entity.Referral;
 import com.med.card.repository.PatientRepo;
 import com.med.card.repository.PatientVisitRepo;
 import com.med.card.repository.ReferralRepo;

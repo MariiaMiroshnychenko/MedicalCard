@@ -1,6 +1,6 @@
 package com.med.card.controller;
 
-import com.med.card.entity.*;
+import com.med.card.model.entity.*;
 import com.med.card.repository.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;

@@ -1,22 +1,17 @@
 package com.med.card.controller;
 
-import com.med.card.entity.MedicalEmployee;
-import com.med.card.entity.Patient;
-import com.med.card.entity.PersonalRegData;
+import com.med.card.model.entity.MedicalEmployee;
+import com.med.card.model.entity.PersonalRegData;
 import com.med.card.repository.MedicalEmployeeRepo;
 import com.med.card.repository.PatientRepo;
 import com.med.card.repository.PersonalRegDataRepo;
-import com.med.card.service.dto.DoctorPatientInfo;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller

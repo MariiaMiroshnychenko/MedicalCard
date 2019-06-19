@@ -1,7 +1,7 @@
 package com.med.card.controller;
 
-import com.med.card.entity.PersonalRegData;
-import com.med.card.repository.PersonalRegDataRepo;
+import com.med.card.controller.service.PersonalRegDataProcessor;
+import com.med.card.model.entity.PersonalRegData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class DocPageForPatientController {
-    private PersonalRegDataRepo personalRegDataRepo;
+    private PersonalRegDataProcessor personalRegDataProcessor;
 
-    public DocPageForPatientController(PersonalRegDataRepo personalRegDataRepo) {
-        this.personalRegDataRepo = personalRegDataRepo;
+    public DocPageForPatientController(PersonalRegDataProcessor personalRegDataProcessor) {
+        this.personalRegDataProcessor = personalRegDataProcessor;
     }
 
     @GetMapping("/doctorPageForPatient")
@@ -24,9 +24,10 @@ public class DocPageForPatientController {
         model.addAttribute("attendingDoctorPatronymic", attendingDoctorPatronymic);
 
         PersonalRegData doctorData =
-                personalRegDataRepo.findAllBySurnameAndNameAndPatronymic(
+                personalRegDataProcessor.findPersonBySurnameAndNameAndPatronymic(
                         attendingDoctorSurname, attendingDoctorName, attendingDoctorPatronymic);
-        personalRegDataRepo.save(doctorData);
+
+        personalRegDataProcessor.save(doctorData);
 
         model.addAttribute("attendingDoctor", doctorData);
 

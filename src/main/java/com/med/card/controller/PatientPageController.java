@@ -1,18 +1,15 @@
 package com.med.card.controller;
 
-import com.med.card.entity.ExamResultByReferral;
-import com.med.card.entity.Patient;
-import com.med.card.entity.PatientVisit;
-import com.med.card.entity.PersonalRegData;
+import com.med.card.model.entity.ExamResultByReferral;
+import com.med.card.model.entity.Patient;
+import com.med.card.model.entity.PatientVisit;
+import com.med.card.model.entity.PersonalRegData;
 import com.med.card.repository.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

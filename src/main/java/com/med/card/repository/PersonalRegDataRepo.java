@@ -1,11 +1,8 @@
 package com.med.card.repository;
 
-import com.med.card.entity.MedicalEmployee;
-import com.med.card.entity.PersonalRegData;
+import com.med.card.model.entity.MedicalEmployee;
+import com.med.card.model.entity.PersonalRegData;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

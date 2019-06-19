@@ -1,6 +1,6 @@
 package com.med.card.config.security;
 
-import com.med.card.service.PersonalRegDataService;
+import com.med.card.controller.service.implementation.PersonalRegDataService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,7 +1,7 @@
-package com.med.card.service.dto;
+package com.med.card.model.dto;
 
-import com.med.card.entity.Patient;
-import com.med.card.entity.PersonalRegData;
+import com.med.card.model.entity.Patient;
+import com.med.card.model.entity.PersonalRegData;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

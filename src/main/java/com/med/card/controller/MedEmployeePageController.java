@@ -1,7 +1,7 @@
 package com.med.card.controller;
 
-import com.med.card.entity.MedicalEmployee;
-import com.med.card.entity.PersonalRegData;
+import com.med.card.model.entity.MedicalEmployee;
+import com.med.card.model.entity.PersonalRegData;
 import com.med.card.repository.MedicalEmployeeRepo;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
